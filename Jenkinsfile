@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'nuget restore'
+                // bat 'nuget restore'
                 bat "\"${MSBUILD_PATH}\" /p:Configuration=Release"
             }
         }
