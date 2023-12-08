@@ -7,14 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                script {
-                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: '<YOUR_GITHUB_REPO_URL>']]])
-                }
-            }
-        }
-
         stage('Build') {
             steps {
                 bat 'nuget restore'
