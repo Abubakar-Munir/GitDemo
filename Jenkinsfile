@@ -2,19 +2,18 @@ pipeline {
     agent any
 
     environment {
-        MSBUILD_PATH = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe"
-        PUBLISH_PATH = "D:\\nasb_deployments\\published"
+        MSBUILD_PATH = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe"
+        PUBLISH_PATH = "d-ntools\\itapps\\Jenkins-CI-CD"
     }
 
     stages {
         stage('Build') {
             steps {
-                // bat 'nuget restore'
-                bat "\"${MSBUILD_PATH}\" /p:Configuration=Release"
+                bat "\"${MSBUILD_PATH}\" Tracking.sln /p:Configuration=Release"
             }
         }
 
-        stage('Copy to Published') {
+        stage('Publish') {
             steps {
                 bat "xcopy /E /Y .\\bin\\Release\\* \"${PUBLISH_PATH}\""
             }
@@ -23,12 +22,10 @@ pipeline {
 
     post {
         success {
-            echo "Build succeeded! Add your success actions here."
-            // For example, trigger downstream jobs or send notifications
+            echo "Build and publish succeeded! Add your success actions here."
         }
         failure {
-            echo "Build failed! Add your failure actions here."
-            // For example, send notifications or clean up resources
+            echo "Build or publish failed! Add your failure actions here."
         }
     }
 }
