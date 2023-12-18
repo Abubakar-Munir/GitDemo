@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat "\"${MSBUILD_PATH}\" Tracking.sln /p:Configuration=Release"
+                bat "\"${MSBUILD_PATH}\" WindowsFormsApp1.sln /p:Configuration=Release"
             }
         }
 
