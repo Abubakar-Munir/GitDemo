@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         MSBUILD_PATH = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe"
-        PUBLISH_PATH = "d-ntools\\itapps\\Jenkins-CI-CD"
+        PUBLISH_PATH = "\\\\d-ntools\\itapps\\Jenkins-CI-CD\\"
     }
 
     stages {
